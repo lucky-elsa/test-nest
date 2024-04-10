@@ -1,6 +1,7 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { RolesGuard } from './common/guards/roles.guard';
 const validationPipeService = require('@pipets/validation-pipes');
 
 async function bootstrap() {

@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
+import { Cat } from '../cats/cat.entity';
 
 @Entity()
 export class User {
@@ -17,7 +18,10 @@ export class User {
   @Column({
     type: 'enum',
     enum: ['user', 'admin'],
-    default: 'user'
+    default: ['user']
   })
   role: 'user' | 'admin';
+
+  @ManyToMany(() => Cat, cat => cat.users)
+  favorites: Cat[];
 }

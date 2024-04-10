@@ -1,12 +1,13 @@
-import { IsInt, IsString } from 'class-validator';
+import { IsString, IsInt, IsBoolean, IsOptional, IsDate, IsEnum, MaxLength } from 'class-validator';
 
 export class CreateCatDto {
   @IsString()
-  readonly name: string;
-
-  @IsInt()
-  readonly age: number;
+  @MaxLength(50, { message: 'Name is over than 50 characters long' })
+  name: string;
 
   @IsString()
-  readonly breed: string;
+  @MaxLength(50, {message: 'Breed Description must be less than 50 characters long'})
+  @IsOptional()
+  breed: string = 'unknown';
+
 }
